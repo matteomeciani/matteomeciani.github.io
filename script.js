@@ -136,15 +136,7 @@ document.querySelectorAll('.stat-card').forEach(card => {
     statsObserver.observe(card);
 });
 
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('#hero');
-
-    if (hero && scrolled < hero.offsetHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
+// Parallax effect removed to prevent overlay issues with sections below
 
 // Dynamic copyright year
 const updateCopyrightYear = () => {
