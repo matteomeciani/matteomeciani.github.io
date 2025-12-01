@@ -73,7 +73,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Intersection Observer for animations
+// Intersection Observer for About Me section
+const aboutObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            aboutObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2,
+    rootMargin: '0px'
+});
+
+const aboutSection = document.querySelector('#about');
+if (aboutSection) {
+    aboutObserver.observe(aboutSection);
+}
+
+// Intersection Observer for other animations
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -90,7 +108,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 const animateOnScroll = document.querySelectorAll(
-    '.stat-card, .timeline-item, .award-card, .experience-card, ' +
+    '.timeline-item, .award-card, .experience-card, ' +
     '.skill-category, .project-card, .contact-item, .training-item'
 );
 

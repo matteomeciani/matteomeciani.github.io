@@ -328,8 +328,6 @@ section:nth-child(even) {
     margin-bottom: 2rem;
     position: relative;
     color: var(--text-primary);
-    opacity: 0;
-    animation: fadeInDown 0.6s ease forwards;
 }
 
 .section-title::after {
@@ -342,31 +340,20 @@ section:nth-child(even) {
     height: 4px;
     background: linear-gradient(to right, var(--primary-color), var(--accent-color));
     border-radius: 2px;
-    animation: expandWidth 0.8s ease 0.4s forwards;
-    width: 0;
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes expandWidth {
-    from {
-        width: 0;
-    }
-    to {
-        width: 60px;
-    }
 }
 
 /* About Section */
+#about {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#about.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .about-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -375,7 +362,14 @@ section:nth-child(even) {
 }
 
 .about-text {
-    animation: slideInLeft 0.8s ease;
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+}
+
+#about.visible .about-text {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .about-text p {
@@ -384,37 +378,40 @@ section:nth-child(even) {
     font-size: 1.1rem;
     line-height: 1.8;
     opacity: 0;
-    animation: fadeInUp 0.6s ease forwards;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.about-text p:nth-child(1) {
-    animation-delay: 0.2s;
+#about.visible .about-text p:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
 }
 
-.about-text p:nth-child(2) {
-    animation-delay: 0.4s;
+#about.visible .about-text p:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
 }
 
-.about-text p:nth-child(3) {
-    animation-delay: 0.6s;
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+#about.visible .about-text p:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.8s;
 }
 
 .about-stats {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    animation: slideInRight 0.8s ease;
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+}
+
+#about.visible .about-stats {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .stat-card {
@@ -425,30 +422,25 @@ section:nth-child(even) {
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0;
-    animation: fadeInScale 0.6s ease forwards;
+    transform: scale(0.8) translateY(20px);
 }
 
-.stat-card:nth-child(1) {
-    animation-delay: 0.3s;
+#about.visible .stat-card:nth-child(1) {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s, box-shadow 0.3s ease;
 }
 
-.stat-card:nth-child(2) {
-    animation-delay: 0.5s;
+#about.visible .stat-card:nth-child(2) {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: opacity 0.6s ease 0.7s, transform 0.6s ease 0.7s, box-shadow 0.3s ease;
 }
 
-.stat-card:nth-child(3) {
-    animation-delay: 0.7s;
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+#about.visible .stat-card:nth-child(3) {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: opacity 0.6s ease 0.9s, transform 0.6s ease 0.9s, box-shadow 0.3s ease;
 }
 
 .stat-card:hover {
