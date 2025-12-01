@@ -183,6 +183,7 @@ body {
 .hero-content {
     max-width: 1200px;
     padding: 2rem;
+    padding-bottom: 6rem;
     position: relative;
     z-index: 1;
 }
@@ -266,12 +267,13 @@ body {
 
 .scroll-indicator {
     position: absolute;
-    bottom: 2rem;
+    bottom: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
     color: white;
     text-align: center;
     animation: bounce 2s infinite;
+    z-index: 0;
 }
 
 .scroll-indicator span {
@@ -326,6 +328,8 @@ section:nth-child(even) {
     margin-bottom: 2rem;
     position: relative;
     color: var(--text-primary);
+    opacity: 0;
+    animation: fadeInDown 0.6s ease forwards;
 }
 
 .section-title::after {
@@ -338,6 +342,28 @@ section:nth-child(even) {
     height: 4px;
     background: linear-gradient(to right, var(--primary-color), var(--accent-color));
     border-radius: 2px;
+    animation: expandWidth 0.8s ease 0.4s forwards;
+    width: 0;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 60px;
+    }
 }
 
 /* About Section */
@@ -348,17 +374,47 @@ section:nth-child(even) {
     align-items: start;
 }
 
+.about-text {
+    animation: slideInLeft 0.8s ease;
+}
+
 .about-text p {
     margin-bottom: 1.5rem;
     color: var(--text-secondary);
     font-size: 1.1rem;
     line-height: 1.8;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.about-text p:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.about-text p:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.about-text p:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .about-stats {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    animation: slideInRight 0.8s ease;
 }
 
 .stat-card {
@@ -368,6 +424,31 @@ section:nth-child(even) {
     box-shadow: var(--shadow-md);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeInScale 0.6s ease forwards;
+}
+
+.stat-card:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.stat-card:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.stat-card:nth-child(3) {
+    animation-delay: 0.7s;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .stat-card:hover {
