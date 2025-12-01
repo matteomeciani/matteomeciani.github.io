@@ -58,14 +58,16 @@ window.addEventListener('scroll', () => {
 // Smooth scroll with offset for fixed navbar
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
 
         if (target) {
-            const targetPosition = target.offsetTop - 80;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
         }
     });
