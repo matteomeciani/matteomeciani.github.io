@@ -485,6 +485,21 @@ section:nth-child(even) {
     animation: fadeInLeft 0.6s ease;
 }
 
+.timeline-item.hidden-education {
+    display: none;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease, margin 0.3s ease;
+}
+
+.timeline-item.hidden-education.show {
+    display: block;
+    opacity: 1;
+    max-height: 1000px;
+    margin-bottom: 2rem;
+}
+
 .timeline-marker {
     position: absolute;
     left: -3.625rem;
@@ -590,6 +605,55 @@ section:nth-child(even) {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+/* Show More Button */
+.show-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn-show-more {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-show-more:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-show-more .hide-text {
+    display: none;
+}
+
+.btn-show-more.active .show-text {
+    display: none;
+}
+
+.btn-show-more.active .hide-text {
+    display: inline;
+}
+
+.btn-show-more .arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.btn-show-more.active .arrow-icon {
+    transform: rotate(180deg);
 }
 
 /* Experience Section */

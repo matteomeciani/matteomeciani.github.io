@@ -331,6 +331,34 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Show More Education functionality
+const showMoreBtn = document.getElementById('showMoreEducation');
+const hiddenEducation = document.querySelectorAll('.hidden-education');
+
+if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', () => {
+        const isActive = showMoreBtn.classList.toggle('active');
+
+        hiddenEducation.forEach(item => {
+            if (isActive) {
+                item.classList.add('show');
+            } else {
+                item.classList.remove('show');
+            }
+        });
+
+        // Smooth scroll adjustment
+        if (isActive) {
+            setTimeout(() => {
+                const button = showMoreBtn.getBoundingClientRect();
+                if (button.bottom > window.innerHeight) {
+                    showMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 300);
+        }
+    });
+}
+
 // Performance optimization: Lazy load images if any are added
 const lazyLoadImages = () => {
     const images = document.querySelectorAll('img[data-src]');
